@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.11.js"></script>
+    <script src="js/jquery.lazyload.js"></script>
+    <script src="js/jquery.scrollstop.js"></script>
+</head>
+<body>
+
+    <div class="pic">
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <img class="car" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+        <!--<img class="car" src="img/grey.gif" alt="1111" data-original="img/bmw_m1_hood.jpg" width="640" height="480"/>-->
+    </div>
+
+    <script>
+        $(function () {
+            $("img.car").lazyload({
+                effect:'fadeIn',
+                effectspeed:1500
+            })
+        })
+    </script>
+</body>
+</html>

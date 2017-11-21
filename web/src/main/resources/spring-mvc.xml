@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:annotation-config/>
+    <!--扫描web相关的bean-->
+    <context:component-scan base-package="cn.test.controller"/>
+    <!--开启SpringMVC注解模式-->
+    <mvc:annotation-driven/>
+    <!--静态资源默认servlet设置-->
+    <mvc:default-servlet-handler/>
+
+    <mvc:resources mapping="/static/css/**" location="/WEB-INF/Views/css/"/>
+    <mvc:resources mapping="/static/js/**" location="/WEB-INF/Views/js/"/>
+    <mvc:resources mapping="/static/img/**" location="/WEB-INF/Views/img/"/>
+
+    <!--<bean class="cn.test.controller.CustomException" id="exceptionHandler"/>-->
+
+
+
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/Views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="suffix" value=".html"/>
+        <property name="order" value="1"/>
+    </bean>
+
+    <bean id="freeMarkerConfigurer" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/html/"/>
+        <!--<property name="defaultEncoding" value="UTF-8"/>-->
+    </bean>
+
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error"/>
+        <property name="exceptionAttribute" value="ex"/>
+        <property name="exceptionMappings" >
+            <props>
+                <prop key="java.lang.IllegalStateException">error</prop>
+                <prop key="javax.servlet.ServletException" >error</prop>
+                <prop key="org.apache.jasper.JasperException" >error</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
