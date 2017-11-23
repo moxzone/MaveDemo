@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:annotation-config/>
-    <!--扫描web相关的bean-->
+    <!--扫描包下的@controller注解的类注册为Spring的Controller-->
     <context:component-scan base-package="cn.test.controller"/>
     <!--开启SpringMVC注解模式-->
     <mvc:annotation-driven/>
@@ -23,8 +23,6 @@
     <mvc:resources mapping="/static/img/**" location="/WEB-INF/Views/img/"/>
 
     <!--<bean class="cn.test.controller.CustomException" id="exceptionHandler"/>-->
-
-
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

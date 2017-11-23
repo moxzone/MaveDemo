@@ -1,5 +1,6 @@
-package cn.test.domain;
+package cn.test.mapper;
 
+import cn.test.domain.User;
 import org.apache.ibatis.annotations.*;
 
 public interface UserMapper {
@@ -18,4 +19,8 @@ public interface UserMapper {
             @Result(column = "email",property = "email")
     })
     User selectUserById(Integer id);
+
+
+    @Select("SELECT * FROM user WHERE username=#{username} and password=#{password}")
+    User findUser(@Param("username") String username,@Param("password") String password);
 }

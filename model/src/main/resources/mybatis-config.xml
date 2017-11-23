@@ -21,6 +21,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="cn.test.domain.UserMapper"/>
+        <mapper class="cn.test.mapper.UserMapper"/>
     </mappers>
 </configuration>

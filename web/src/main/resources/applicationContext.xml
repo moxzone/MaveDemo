@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!--扫描mapper包里的接口当做mapper配置，之后可自动引用mapper类-->
+    <mybatis:scan base-package="cn.test.mapper"/>
+    <!--扫描所以注解的类注册为bean-->
+    <context:component-scan base-package="cn.test"/>
+    <!--使用PropertyOverrideConfigurer后处理器加载数据源参数-->
+    <context:property-override location="classpath:db.properties"/>
+
+    <!--数据库连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"/>
+        <!--<property name="driverClass" value="${driver}"/>-->
+        <!--<property name="jdbcUrl" value="${url}"/>-->
+        <!--<property name="user" value="${username}"/>-->
+        <!--<property name="password" value="${password}"/>-->
+    <!--</bean>-->
+    <!--配置SQLSessionFactory-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory" p:dataSource-ref="dataSource"/>
+
+    <!--JDBC事务管理器-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager" p:dataSource-ref="dataSource"/>
+
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+        <!--<property name="dataSource" value="dataSource"/>-->
+    <!--</bean>-->
+    <!--启用支持annotation注解方式事务管理-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
